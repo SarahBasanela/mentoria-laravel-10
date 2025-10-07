@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProdutosController;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\Framework\Attributes\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
+});
+// http://localhost:8989/produtos/MaisAlgumaCoisa
+Route::prefix('produtos')->group(function(){
+    Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
 });
