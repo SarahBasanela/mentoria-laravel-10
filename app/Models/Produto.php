@@ -13,4 +13,12 @@ class Produto extends Model
         'nome',
         'valor',
     ];
+
+    public function getProdutosPesquisarIndex(string $search = '')
+    {
+
+        $produto = self::where('nome', 'LIKE', '%' . $search . '%')->get();
+
+        return $produto;
+    }
 }
