@@ -30,7 +30,7 @@
             <tbody>
                 @foreach ($findCliente as $cliente)
                 <tr>
-                    <td>{{  $cliente->nome }}</td>
+                    <td>{{ $cliente->nome }}</td>
                     <td>{{ $cliente->email }}</td>
                     <td>{{ $cliente->endereco }}</td>
                     <td>{{ $cliente->logradouro }}</td>
