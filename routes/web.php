@@ -5,7 +5,7 @@ use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
 use App\Http\Controllers\ClientesController;
-
+use App\Http\Controllers\VendaController;
 
 Route::get('/', function () {
     return view('index');
@@ -34,5 +34,13 @@ Route::prefix('clientes')->group(function(){
     Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
 
     Route::delete('/', [ClientesController::class, 'delete'])->name('cliente.delete');
+    
+});
+
+Route::prefix('vendas')->group(function(){
+    Route::get('/', [VendaController::class, 'index'])->name('vendas.index');
+    // Cadastro Cliente
+    Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
+    Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVenda'])->name('cadastrar.venda');
     
 });
