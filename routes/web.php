@@ -4,6 +4,8 @@ use App\Http\Controllers\ProdutosController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Group;
+use App\Http\Controllers\ClientesController;
+
 
 Route::get('/', function () {
     return view('index');
@@ -19,5 +21,18 @@ Route::prefix('produtos')->group(function(){
     Route::put('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
 
     Route::delete('/', [ProdutosController::class, 'delete'])->name('produto.delete');
+    
+});
+
+Route::prefix('clientes')->group(function(){
+    Route::get('/', [ClientesController::class, 'index'])->name('clientes.index');
+    // Cadastro Cliente
+    Route::get('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+    Route::post('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+    // Update Clientes
+    Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+    Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+
+    Route::delete('/', [ClientesController::class, 'delete'])->name('cliente.delete');
     
 });
