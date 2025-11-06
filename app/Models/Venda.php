@@ -24,4 +24,12 @@ class Venda extends Model
     {
         return $this->belongsTo(Cliente::class);
     }
+
+     public function getVendasPesquisarIndex(string $search = '')
+    {
+
+        $venda = self::where('numero_da_venda', 'LIKE', '%' . $search . '%')->get();
+
+        return $venda;
+    }
 }
